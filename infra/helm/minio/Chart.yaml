@@ -1,0 +1,4 @@
+apiVersion: v2
+name: minio
+description: MinIO standalone deployment with PVC and Ingress
+version: 0.1.0

@@ -1,0 +1,23 @@
+image:
+  repository: minio/minio
+  tag: RELEASE.2022-10-29T06-21-33Z
+fullnameOverride: minio
+MINIO_ACCESS_KEY: mykey
+MINIO_SECRET_KEY: mysecret
+mode: standalone
+
+service:
+  type: NodePort
+  port: 9000
+
+persistence:
+  enabled: true
+  storageClass: local-path
+  size: 10Gi
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "200m"

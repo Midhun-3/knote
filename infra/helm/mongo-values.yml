@@ -1,0 +1,4 @@
+fullnameOverride: mongo
+auth:
+  enabled: false
+architecture: standalone

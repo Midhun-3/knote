@@ -1,0 +1,37 @@
+replicaCount: 1
+
+image:
+  repository: learnk8s/knote-js
+  tag: "2.0.0"
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 3000
+
+env:
+  - name: MONGO_URL
+    value: mongodb://mongo.database.svc.cluster.local:27017/dev
+  - name: MINIO_ACCESS_KEY
+    value: mykey
+  - name: MINIO_SECRET_KEY
+    value: mysecret
+  - name: MINIO_HOST
+    value: minio-minio.storage.svc.cluster.local
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 50
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: knote.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: [] 

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "minio.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "minio.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "minio.fullname" . }}
+    spec:
+      containers:
+        - name: minio
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          args:
+            - server
+            - /storage
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: {{ .Values.accessKey }}
+            - name: MINIO_SECRET_KEY
+              value: {{ .Values.secretKey }}
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: storage
+              mountPath: /storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: {{ include "minio.fullname" . }}-pvc
