@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knote
+  namespace: knote
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Midhun-3/knote.git'
+    targetRevision: HEAD
+    path: infra/helm/k-note
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: knote
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

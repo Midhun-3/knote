@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb
+  namespace: database
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Midhun-3/knote.git'
+    path: infra/helm/mongodb
+    helm:
+      valueFiles:
+        - ../helm/mongo-values.yml   # local relative path from your Git repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: database
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
