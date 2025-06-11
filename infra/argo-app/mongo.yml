@@ -6,8 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Midhun-3/knote.git'
-    path: infra/helm/mongodb
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: mongodb
+    targetRevision: 14.4.2   # or latest compatible
     helm:
       valueFiles:
         - ../helm/mongo-values.yml   # local relative path from your Git repo
