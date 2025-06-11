@@ -8,4 +8,5 @@ spec:
     app: {{ include "minio.fullname" . }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 9000
+      targetPort: {{ .Values.service.targetPort }}
+  type: {{ .Values.service.type }}
