@@ -10,7 +10,7 @@ spec:
     path: infra/helm/mongodb
     helm:
       valueFiles:
-        - ../helm/mongo-values.yml   # local relative path from your Git repo
+        - ../mongo-values.yml   # local relative path from your Git repo
   destination:
     server: https://kubernetes.default.svc
     namespace: database
