@@ -20,6 +20,12 @@ service:
 ingress:
   enabled: true
   className: nginx
-  annotations: {}
-  host: minio.local
-  path: /minio
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: minio.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
