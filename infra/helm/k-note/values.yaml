@@ -30,8 +30,8 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
-    - host: a86c26f24bfe54a24896e535e1046f7f-1725809822.eu-north-1.elb.amazonaws.com
+    - host: a0074eef8014a42779c4f3ddecc93774-248071088.eu-north-1.elb.amazonaws.com
       paths:
-        - path: /knote
+        - path: /
           pathType: Prefix
   tls: [] 
