@@ -11,7 +11,7 @@ secretKey: mysecret
 persistence:
   enabled: true
   size: 256Mi
-  storageClass: gp2
+  storageClass: []
 
 service:
   type: NodePort
