@@ -24,7 +24,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
-    - host: a0074eef8014a42779c4f3ddecc93774-248071088.eu-north-1.elb.amazonaws.com
+    - host: minio.local
       paths:
         - path: /minio
           pathType: Prefix
